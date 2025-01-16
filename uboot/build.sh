@@ -9,7 +9,7 @@
 
 #使用Yocto SDK里的GCC 5.3.0交叉编译器编译出厂Linux源码,可不用指定ARCH等，直接执行Make
 # source /home/liyuan/code/atk_imx6u/toolchain/gcc-linaro-4.9.4-2017.01-x86_64_arm-linux-gnueabihf/bin
-export CROSS_COMPILE=/home/liyuan/code/atk_imx6u/toolchain/gcc-linaro-4.9.4-2017.01-x86_64_arm-linux-gnueabihf/bin/arm-linux-gnueabihf-
+export CROSS_COMPILE=../toolchain/gcc-linaro-4.9.4-2017.01-x86_64_arm-linux-gnueabihf/bin/arm-linux-gnueabihf-
 
 #!/bin/bash
 #编译前先清除
@@ -30,14 +30,14 @@ make distclean
 # make all -j16
 # mv u-boot.imx u-boot-imx6ull-14x14-ddr512-emmc.imx
 # mv u-boot.bin u-boot-imx6ull-14x14-ddr512-emmc.bin
-# make mx6ull_14x14_ddr256_nand_defconfig
-# make all -j16
-# mv u-boot.imx u-boot-imx6ull-14x14-ddr256-nand.imx
-# mv u-boot.bin u-boot-imx6ull-14x14-ddr256-nand.bin
-make mx6ull_14x14_ddr512_nand_defconfig
+make mx6ull_14x14_ddr256_nand_defconfig
 make all -j16
-mv u-boot.imx u-boot-imx6ull-14x14-ddr512-nand.imx
-mv u-boot.bin u-boot-imx6ull-14x14-ddr512-nand.bin
+mv u-boot.imx u-boot-imx6ull-14x14-ddr256-nand.imx
+mv u-boot.bin u-boot-imx6ull-14x14-ddr256-nand.bin
+# make mx6ull_14x14_ddr512_nand_defconfig
+# make all -j16
+# mv u-boot.imx u-boot-imx6ull-14x14-ddr512-nand.imx
+# mv u-boot.bin u-boot-imx6ull-14x14-ddr512-nand.bin
 #在当前目录下新建一个tmp目录，用于存放编译后的目标文件
 if [ ! -e "./tmp" ]; then
     mkdir tmp
